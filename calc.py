@@ -20,6 +20,8 @@ def button_click(x):
     
     
 def button_clear_func():
+    global fnum 
+    fnum = 0
     e.delete(0,END)
 
 
@@ -27,18 +29,25 @@ fnum = 0
 
 def button_plus_func():
     # so this needs to remember (state) not do the whole equal thing. when you press it it stores the first number and e.delete s
-
     first_number = e.get()
     global fnum 
     if first_number == "":
         pass
     else: 
         fnum += int(first_number)
-    print(f"fnum= {fnum}")
+    print(f"fnum= {fnum}") #log , delete later
     e.delete(0, END)
 
 def button_equal_func():
-    pass
+    second_number = e.get()
+    global fnum 
+    fnum += int(second_number)
+    second_number = ""
+    e.delete(0,END)
+    e.insert(0, str(fnum))   # insert result as string
+    fnum = 0
+    print(f"fnum= {fnum}") #log , delete later
+
 
 # defining buttons
 

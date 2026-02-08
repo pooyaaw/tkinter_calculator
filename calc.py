@@ -16,13 +16,29 @@ def button_click(x):
     global current
     e.insert(END, x)
     current = str(e.get())  
-    
-    print(f"{e.get()}current = {current}")
+    # print(f"{e.get()}current = {current}")
     
     
 def button_clear_func():
     e.delete(0,END)
 
+
+fnum = 0
+
+def button_plus_func():
+    # so this needs to remember (state) not do the whole equal thing. when you press it it stores the first number and e.delete s
+
+    first_number = e.get()
+    global fnum 
+    if first_number == "":
+        pass
+    else: 
+        fnum += int(first_number)
+    print(f"fnum= {fnum}")
+    e.delete(0, END)
+
+def button_equal_func():
+    pass
 
 # defining buttons
 
@@ -36,9 +52,9 @@ button_7 = Button(root, text="7", padx=40, pady=20, command=lambda: button_click
 button_8 = Button(root, text="8", padx=40, pady=20, command=lambda: button_click(8))
 button_9 = Button(root, text="9", padx=40, pady=20, command=lambda: button_click(9))
 button_0 = Button(root, text="0", padx=40, pady=20, command=lambda: button_click(0))
-button_clear = Button(root, text="C", padx=40, pady=20, command=lambda: button_clear_func())
-button_plus = Button(root, text="+", padx=40, pady=20, command=lambda: button_click)
-button_equal = Button(root, text="=", padx=40, pady=20, command=lambda: button_click)
+button_clear = Button(root, text="C", padx=40, pady=20, command= button_clear_func) # here I can omit lambda because I don't need to pass anything. 
+button_plus = Button(root, text="+", padx=40, pady=20, command= button_plus_func)
+button_equal = Button(root, text="=", padx=40, pady=20, command= button_equal_func)
 # when we pass stuff into these buttons it has to be through a lambda function
 
 # putting buttons on the screen
